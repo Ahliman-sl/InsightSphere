@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Javascript -->
+    <script defer src="js/script.js"></script>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <title>InsightSphere</title>
+  </head>
+  <body>
+    <!-- Navbar start -->
+    <nav
+      class="navbar navbar-expand-lg bg-dark border-bottom border-body"
+      data-bs-theme="dark"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">InsightSphere</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul
+            class="navbar-nav me-auto mb-2 mb-lg-0 gap-3 justify-content-center flex-grow-1 pe-3"
+          >
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About us </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Top News Category
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#" id="technology"
+                    >Technology</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" id="general">General</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" id="sports">Sports</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#" id="entertainment"
+                    >Entertainment</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" aria-disabled="true">Contact US</a>
+            </li>
+          </ul>
+          <button type="button" id="sign-up-btn" class="btn btn-secondary">
+            Sign up
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar end -->
+
+    <h1 class="display-5 text-center mt-3 top-news-title">
+      Top <span class="highlight">news </span>of the month
+    </h1>
+
+    <!-- Top news content -->
+    <div class="container-fluid mt-5 top-news"></div>
+
+    <!-- Quoeto -->
+    <div class="container mt-5 d-flex justify-content-center">
+      <figure>
+        <blockquote class="blockquote">
+          <p>
+            "Freedom of the press is not just important to democracy, it is
+            democracy."
+          </p>
+        </blockquote>
+        <figcaption class="blockquote-footer">Walter Cronkite</figcaption>
+      </figure>
+    </div>
+
+    <!-- Search Bar title -->
+    <h1 class="display-5 text-center mt-3 top-news-title">
+      Find the latest news
+    </h1>
+    <!-- Search Bar -->
+    <div class="container-fluid mt-5" id="focusPoint">
+      <form class="d-flex">
+        <input
+          id="searchInput"
+          class="form-control"
+          type="search"
+          placeholder="Search"
+        />
+        <button id="searchButton" class="btn btn-outline-info" type="submit">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </form>
+    </div>
+    <!-- Searched Content -->
+    <div class="container-fluid mt-2">
+      <div
+        class="row d-flex flex-row justify-content-between gap-3 mx-5 search-news"
+      ></div>
+      <div class="col-12 mt-3 mb-3 d-flex justify-content-center gap-5">
+        <button
+          type="button"
+          class="btn navbutton bg-dark text-white my-3"
+          id="prevPage"
+        >
+          Previous page
+        </button>
+        <button
+          type="button"
+          class="btn navbutton bg-dark text-white my-3"
+          id="nextPage"
+        >
+          Next page
+        </button>
+      </div>
+    </div>
+    <!-- Modal Window Sign up Form -->
+    <div
+      class="container d-flex justify-content-center align-items-center min-vh-100 modal-pop-up hidden"
+    >
+      <div
+        class="row border rounded-5 p-3 bg-white shadow box-area position-relative"
+      >
+        <div class="col-md-6 rounded-4 left-box">
+          <div
+            class="featured-image d-flex align-items-center justify-content-center flex-column text-white text-center"
+          >
+            <img
+              src="./img/modal-IMG.jpg"
+              class="img-fluid"
+              style="width: max-content"
+              alt=""
+            />
+            <p class="lead">Join the largest gaming community</p>
+            <small>
+              "Stay up to date with new game releases, discounts, and exclusive
+              offers tailored just for you."</small
+            >
+          </div>
+        </div>
+        <div class="col-md-6 right-box px-5">
+          <div class="header-text mb-4">
+            <p class="mt-small-screen-only">Hi Gamer</p>
+            <p>We are happy to see you in our community</p>
+          </div>
+          <div class="row align-items-center" id="formContainer">
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control form-control-lg bg-light fs-6"
+                placeholder="Email adress"
+              />
+            </div>
+            <div class="input-group mb-3">
+              <input
+                type="password"
+                class="form-control form-control-lg bg-light fs-6"
+                placeholder="Paswoord"
+              />
+            </div>
+            <div class="input-group mb-5 d-flex justify-content-between">
+              <div class="form-check">
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  id="formCheck"
+                />
+                <label for="formCheck" class="form-check-label text-secondary"
+                  ><small>Remember Me</small></label
+                >
+              </div>
+              <div class="forgot">
+                <small><a href="#">Forgot Password?</a></small>
+              </div>
+            </div>
+            <div class="input-group mb-3">
+              <button class="btn btn-lg btn-primary w-100 fs-6">Login</button>
+            </div>
+            <div class="input-group mb-3">
+              <button class="btn btn-lg btn-light w-100 fs-6">
+                <img
+                  src="./img/google-logo-9808.png"
+                  style="width: 20px"
+                  class="me-2"
+                />Sign in with Google
+              </button>
+            </div>
+            <div class="row">
+              <small
+                >Don't have account? <a id="signUP" href="#">Sign Up</a></small
+              >
+            </div>
+          </div>
+        </div>
+        <button
+          type="button"
+          id="close-modal"
+          class="btn-close"
+          aria-label="Close"
+        ></button>
+      </div>
+    </div>
+    <!-- Overlay -->
+    <div class="overlay hidden"></div>
+
+    <div class="container-fluid mt-5">
+      <div class="row">
+        <div class="col-lg-6">
+          <div
+            class="card bg-success text-white mb-3 d-flex align-items-center justify-content-center"
+          >
+            <div class="row g-0">
+              <div class="col-md-12">
+                <img
+                  src="./img/FBI.jpg"
+                  class="img-fluid rounded-start md-12 fbi-image d-block mx-auto"
+                  alt="..."
+                />
+              </div>
+              <div class="col">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    "Shooting of Deputy Sheriff in East Tennessee: Conversation
+                    with Detective John about Murder Investigation"
+                  </h5>
+                  <p class="card-text lead">
+                    After the tragic incident in East Tennessee, a detailed
+                    conversation with Detective John about the murder
+                    investigation was conducted
+                  </p>
+                  <p class="card-text">
+                    <small class="text-white"> - CNN news</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="accordion" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseOne"
+                  aria-expanded="true"
+                  aria-controls="panelsStayOpen-collapseOne"
+                >
+                  "East Tennessee Shooting: Detective John Briefing"
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseOne"
+                class="accordion-collapse collapse show"
+              >
+                <div class="accordion-body">
+                  <strong>News Anchor:</strong> Good day, our headline this
+                  evening is regarding the shooting of a sheriff's deputy and
+                  injuring another in East Tennessee. We have our correspondent
+                  on the scene to provide the latest updates on this tragic
+                  incident. Let's now connect with our guest speaker. Good
+                  evening, we have Detective John here with us. Could you
+                  provide some information about this murder investigation?<br />
+                  <strong>Detective John:</strong> Good evening, yes, according
+                  to the information we have, a suspect named Kenneth Dehart
+                  shot and killed a sheriff's deputy and injured another during
+                  a traffic stop by the Blount County Sheriff's Office.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseTwo"
+                >
+                  "Suspect Information: Updates on East Tennessee Incident"
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseTwo"
+                class="accordion-collapse collapse"
+              >
+                <div class="accordion-body">
+                  <strong>News Anchor:</strong> This is indeed a saddening
+                  development. What information do we currently have about the
+                  suspect? <br /><strong>Detective John:</strong> We don't have
+                  clear information about the suspect's identity and whereabouts
+                  yet. However, the Blount County Sheriff's Office is conducting
+                  an intensive search operation to locate Dehart.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#panelsStayOpen-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="panelsStayOpen-collapseThree"
+                >
+                  "Motives Behind the Murder: Detective John Insights"
+                </button>
+              </h2>
+              <div
+                id="panelsStayOpen-collapseThree"
+                class="accordion-collapse collapse"
+              >
+                <div class="accordion-body">
+                  <strong>News Anchor:</strong> Alright, what factors could be
+                  behind this murder? Do we have any clues about why the suspect
+                  would commit such an act? <br />
+                  <strong>Detective John:</strong> At this point, since we are
+                  in the early stages of the investigation, we don't have clear
+                  information about this. However, we are aware of the suspect's
+                  prior criminal record, and we are investigating the
+                  motivations behind this incident.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="container-md-12 mt-5 d-flex align-items-center justify-content-center"
+    >
+      <div class="row cards-wrapper g-5 card-section">
+        <div class="col-lg-4 col-md-12">
+          <div class="card" style="width: 20rem">
+            <img
+              src="./img/pexels-brotin-biswas-518543.jpg"
+              class="card-img-top mx-auto my-auto subscribe-cards-img"
+              alt=""
+              style="width: 20rem"
+            />
+            <div class="card-body">
+              <h5 class="card-title lead text-center">Subscription</h5>
+              <p class="card-text">
+                A basic subscription level for those who simply want to stay
+                updated with the news. Stay informed with essential news content
+                and daily updates.
+              </p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li
+                class="list-group-item text-white text-center"
+                style="background-color: #7f8c8d; color: #ffffff"
+              >
+                BASIC
+              </li>
+            </ul>
+            <div class="d-grid gap-2">
+              <button
+                class="btn bg-success subscribtion-buttons"
+                type="button"
+                style="color: #ffffff"
+              >
+                Buy now
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 card-2">
+          <div class="card" style="width: 20rem">
+            <img
+              src="./img/pexels-caio-67112.jpg"
+              class="card-img-top mx-auto my-auto"
+              alt=""
+              style="width: 20rem"
+            />
+            <div class="card-body">
+              <h5 class="card-title lead text-center">Subscription</h5>
+              <p class="card-text">
+                Ideal for those who delve deeper into the news and seek access
+                to exclusive content. With a Pro subscription, you can access
+                special reports, analyses, and interactive content.
+              </p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li
+                class="list-group-item text-center"
+                style="background-color: #353b3b; color: #ffffff"
+              >
+                PRO
+              </li>
+            </ul>
+            <div class="d-grid gap-2">
+              <button
+                class="btn bg-danger subscribtion-buttons"
+                type="button"
+                style="color: #ffffff"
+              >
+                Buy now
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 card-3">
+          <div class="card" style="width: 20rem">
+            <img
+              src="./img/pexels-redrec-©️-2872418.jpg"
+              class="card-img-top mx-auto my-auto"
+              alt=""
+              style="width: 20rem"
+            />
+            <div class="card-body">
+              <h5 class="card-title lead text-center">Subscription</h5>
+              <p class="card-text">
+                A comprehensive subscription level for those who aspire to be at
+                the forefront of the news world. With a Premium subscription,
+                you'll gain access to VIP events, personalized news feeds, and
+                exclusive consultancy services.
+              </p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li
+                class="list-group-item text-center"
+                style="background-color: #0d0e0f; color: #ffffff"
+              >
+                PREMIUM
+              </li>
+            </ul>
+            <div class="d-grid gap-2">
+              <button
+                class="btn btn-primary subscribtion-buttons"
+                type="button"
+                style="color: #ffffff"
+              >
+                Buy now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-dark text-light mt-5 py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>InsightSphere</h5>
+            <p>"Deep Insights, News Sphere"</p>
+          </div>
+          <div class="col-md-3">
+            <h5>Menu</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none text-white">Home</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none text-white">About us</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none text-white"
+                  >Contact us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none text-white">Github</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Contact</h5>
+            <!-- <ul class="list-unstyled">
+              <li>Adres: 123 Sokak, İstanbul</li>
+              <li>Telefon: (123) 456-7890</li>
+              <li>Email: info@example.com</li>
+            </ul> -->
+            <li>
+              <a href="#" class="text-decoration-none text-white me-2"
+                ><i class="fab fa-facebook"></i
+              ></a>
+              <a href="#" class="text-decoration-none text-white me-2"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="text-decoration-none text-white me-2"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+            </li>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <p class="text-center">
+              &copy; 2024 All rights reserved. This project was authored by
+              Ahliman Suleymanli.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap Script -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
