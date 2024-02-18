@@ -5,6 +5,7 @@ const signUp = document.getElementById("sign-up-btn");
 const modal = document.querySelector(".modal-pop-up");
 const overlay = document.querySelector(".overlay");
 const closeButton = document.querySelector("#close-modal");
+const API_KEY = "2f0f204e2507fdad6f123e6112d08595";
 // const apiKey = "e4d0f46caa734f51b4f2abacc7f1509e";
 
 // MODAL WINDOW POP-UP
@@ -73,7 +74,7 @@ const uptadeUI = function (data) {
               aria-current="true"
             >
               <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">${data.articles[0].author}</h5>
+                <h5 class="mb-1">${data.articles[0].source.name}</h5>
                 <small>${data.articles[0].publishedAt.slice(0, 10)}</small>
               </div>
               <p class="mb-1">${data.articles[0].title}</p>
@@ -86,7 +87,7 @@ const uptadeUI = function (data) {
               aria-current="true"
             >
               <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">${data.articles[1].author}</h5>
+                <h5 class="mb-1">${data.articles[1].source.name}</h5>
                 <small>${data.articles[1].publishedAt.slice(0, 10)}</small>
               </div>
               <p class="mb-1">${data.articles[1].title}</p>
@@ -99,7 +100,7 @@ const uptadeUI = function (data) {
               aria-current="true"
             >
               <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">${data.articles[2].author}</h5>
+                <h5 class="mb-1">${data.articles[2].source.name}</h5>
                 <small>${data.articles[2].publishedAt.slice(0, 10)}</small>
               </div>
               <p class="mb-1">${data.articles[2].title}</p>
@@ -112,7 +113,7 @@ const uptadeUI = function (data) {
               aria-current="true"
             >
               <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">${data.articles[3].author}</h5>
+                <h5 class="mb-1">${data.articles[3].source.name}</h5>
                 <small>${data.articles[3].publishedAt.slice(0, 10)}</small>
               </div>
               <p class="mb-1">${data.articles[3].title}</p>
@@ -125,7 +126,7 @@ const uptadeUI = function (data) {
               aria-current="true"
             >
               <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">${data.articles[4].author}</h5>
+                <h5 class="mb-1">${data.articles[4].source.name}</h5>
                 <small>${data.articles[4].publishedAt.slice(0, 10)}</small>
               </div>
               <p class="mb-1">${data.articles[4].title}</p>
@@ -154,7 +155,7 @@ const getCategoryAndGetData = function () {
 const getData = async function (category) {
   try {
     const res = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=tr&category=${category}&apiKey=c6e1eace128c41a0bef920c8335f929b`
+      `https://gnews.io/api/v4/top-headlines?lang=en&category=${category}&apikey=${API_KEY}`
     );
     const data = await res.json();
     console.log(data);
@@ -171,7 +172,7 @@ getCategoryAndGetData();
 
 // PAGINATION FOR SEARCH NEWS
 let currentPage = 0;
-const pageSize = 12; // Her sayfadaki oge sayisi
+const pageSize = 4; // Her sayfadaki oge sayisi
 
 const uptadePaginationButtons = () => {
   const prevButton = document.getElementById("prevPage");
@@ -186,7 +187,7 @@ const uptadePaginationButtons = () => {
 const getSearchData = async function (searchTerm) {
   try {
     const res = await fetch(
-      `https://newsapi.org/v2/everything?q=${searchTerm}&apiKey=c6e1eace128c41a0bef920c8335f929b`
+      `https://gnews.io/api/v4/search?q=${searchTerm}&lang=en&apikey=${API_KEY}`
     );
     const data = await res.json();
     uptadeSearchUI(data);
@@ -208,7 +209,7 @@ const uptadeSearchUI = function (data) {
     const markup = `
   <div class="card mt-3 s-content" style="width: 18rem">
     <img  height = "250" src="${
-      data.articles[i].urlToImage ||
+      data.articles[i].image ||
       "https://www.eclosio.ong/wp-content/uploads/2018/08/default.png"
     }" class="card-img-top" alt="..." />
     <div class="card-body">
